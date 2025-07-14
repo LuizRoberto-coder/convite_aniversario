@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="bolo.ico" type="image/x-icon">
+    <title>Convite com Envelope</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'gradient-bg': 'gradientBG 10s ease infinite',
+                        'fade-in': 'fadeIn 0.8s ease-in-out'
+                    },
+                    keyframes: {
+                        gradientBG: {
+                            '0%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                            '100%': { backgroundPosition: '0% 50%' },
+                        },
+                        fadeIn: {
+                            from: { opacity: '0', transform: 'translateY(20px)' },
+                            to: { opacity: '1', transform: 'translateY(0)' },
+                        },
+                    },
+                    backgroundImage: {
+                        'gradient-envelop': 'linear-gradient(-45deg, #1e3a8a, #2563eb, #1e40af, #3b82f6)'
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body
+    class="bg-gradient-envelop bg-[length:400%_400%] animate-gradient-bg min-h-screen flex items-center justify-center">
+
+    <!-- musica de fundo -->
+    <audio id="bg-music" src="happy-birthday-368842.mp3" loop hidden></audio>
+
+    <!-- Envelope -->
+<div id="envelope-container" class="flex flex-col items-center text-white text-center mb-6">
+  <p class="text-lg mb-1">Clique aqui</p>
+  <div class="text-4xl animate-bounce mb-4">⬇️</div>
+
+  <div id="envelope"
+    class="cursor-pointer relative w-[220px] h-[140px] bg-gradient-to-br from-blue-700 to-blue-500 rounded-xl shadow-2xl overflow-hidden transition-transform duration-300 ease-in-out hover:scale-105">
+    <div
+      class="absolute top-0 left-0 w-0 h-0 border-l-[110px] border-r-[110px] border-b-[70px] border-transparent border-b-blue-900">
+    </div>
+    <div
+      class="absolute bottom-0 left-0 w-0 h-0 border-l-[110px] border-r-[110px] border-t-[70px] border-transparent border-t-blue-900">
+    </div>
+  </div>
+</div>
+    <!-- Convite -->
+    <div id="convite"
+        class="hidden bg-gray-900 border border-gray-700 shadow-2xl rounded-2xl p-8 max-w-md text-center text-white animate-fade-in">
+        <h1 class="text-4xl font-extrabold text-blue-400 mb-4">🎉 Convite Especial 🎉</h1>
+        <p class="text-gray-300 text-lg mb-6">
+            Chegou a hora de comemorar mais um ano com estilo, amigos e muita energia. Você não pode faltar!
+        </p>
+        <div class="text-left text-gray-400 mb-6">
+            <p><strong>📍 Local:</strong> Sitio Pilhões - Casa do Doca.</p>
+            <p><strong>📅 Data:</strong> 17 de Julho de 2025</p>
+            <p><strong>⏰ Horário:</strong> A partir das 19h</p>
+        </div>
+        <div class="flex flex-col gap-4">
+            <a href="confirmar.html" target="_blank"
+                class="bg-blue-600 text-white px-6 py-2 rounded-xl hover:bg-blue-700 transition shadow-lg text-center">
+                Confirmar presença
+            </a>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+
+</body>
+
+</html>
