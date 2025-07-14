@@ -1,83 +1,173 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="bolo.ico" type="image/x-icon">
-    <title>Convite com Envelope</title>
+    <title>Convite de Aniversário</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    animation: {
-                        'gradient-bg': 'gradientBG 10s ease infinite',
-                        'fade-in': 'fadeIn 0.8s ease-in-out'
-                    },
-                    keyframes: {
-                        gradientBG: {
-                            '0%': { backgroundPosition: '0% 50%' },
-                            '50%': { backgroundPosition: '100% 50%' },
-                            '100%': { backgroundPosition: '0% 50%' },
-                        },
-                        fadeIn: {
-                            from: { opacity: '0', transform: 'translateY(20px)' },
-                            to: { opacity: '1', transform: 'translateY(0)' },
-                        },
-                    },
-                    backgroundImage: {
-                        'gradient-envelop': 'linear-gradient(-45deg, #1e3a8a, #2563eb, #1e40af, #3b82f6)'
-                    },
-                },
-            },
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        .title-font {
+            font-family: 'Playfair Display', serif;
         }
-    </script>
+        .body-font {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .hexagon {
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+        .glow {
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+        }
+        .gradient-envelop {
+            background: linear-gradient(-45deg, #1e3a8a, #2563eb, #1e40af, #3b82f6);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
-
-<body
-    class="bg-gradient-envelop bg-[length:400%_400%] animate-gradient-bg min-h-screen flex items-center justify-center">
-
-    <!-- musica de fundo -->
+<body class="gradient-envelop min-h-screen flex items-center justify-center p-4 body-font">
+    <!-- Música de fundo -->
     <audio id="bg-music" src="happy-birthday-368842.mp3" loop hidden></audio>
 
     <!-- Envelope -->
-<div id="envelope-container" class="flex flex-col items-center text-white text-center mb-6">
-  <p class="text-lg mb-1">Clique aqui</p>
-  <div class="text-4xl animate-bounce mb-4">⬇️</div>
+    <div id="envelope-container" class="flex flex-col items-center text-white text-center">
+        <p class="text-lg mb-1">Clique no envelope</p>
+        <div class="text-4xl animate-bounce mb-4">⬇️</div>
 
-  <div id="envelope"
-    class="cursor-pointer relative w-[220px] h-[140px] bg-gradient-to-br from-blue-700 to-blue-500 rounded-xl shadow-2xl overflow-hidden transition-transform duration-300 ease-in-out hover:scale-105">
-    <div
-      class="absolute top-0 left-0 w-0 h-0 border-l-[110px] border-r-[110px] border-b-[70px] border-transparent border-b-blue-900">
-    </div>
-    <div
-      class="absolute bottom-0 left-0 w-0 h-0 border-l-[110px] border-r-[110px] border-t-[70px] border-transparent border-t-blue-900">
-    </div>
-  </div>
-</div>
-    <!-- Convite -->
-    <div id="convite"
-        class="hidden bg-gray-900 border border-gray-700 shadow-2xl rounded-2xl p-8 max-w-md text-center text-white animate-fade-in">
-        <h1 class="text-4xl font-extrabold text-blue-400 mb-4">🎉 Convite Especial 🎉</h1>
-        <p class="text-gray-300 text-lg mb-6">
-            Chegou a hora de comemorar mais um ano com estilo, amigos e muita energia. Você não pode faltar!
-        </p>
-        <div class="text-left text-gray-400 mb-6">
-            <p><strong>📍 Local:</strong> Sitio Pilhões - Casa do Doca.</p>
-            <p><strong>📅 Data:</strong> 20 de Julho de 2025</p>
-            <p><strong>⏰ Horário:</strong> A partir das 19h</p>
-        </div>
-        <div class="flex flex-col gap-4">
-            <a href="confirmar.html" target="_blank"
-                class="bg-blue-600 text-white px-6 py-2 rounded-xl hover:bg-blue-700 transition shadow-lg text-center">
-                Confirmar presença
-            </a>
+        <div id="envelope" class="cursor-pointer relative w-[220px] h-[140px] bg-gradient-to-br from-blue-800 to-blue-600 rounded-xl shadow-2xl overflow-hidden transition-transform duration-300 ease-in-out hover:scale-105">
+            <div class="absolute top-0 left-0 w-0 h-0 border-l-[110px] border-r-[110px] border-b-[70px] border-transparent border-b-blue-900"></div>
+            <div class="absolute bottom-0 left-0 w-0 h-0 border-l-[110px] border-r-[110px] border-t-[70px] border-transparent border-t-blue-900"></div>
         </div>
     </div>
+
+    <!-- Convite (inicialmente escondido) -->
+    <div id="convite" class="hidden bg-gray-900 rounded-xl shadow-2xl overflow-hidden text-gray-100 max-w-lg w-full fade-in">
+        <!-- Cabeçalho com efeito geométrico -->
+        <div class="relative p-8 bg-gradient-to-r from-blue-900 to-gray-900">
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-600 rounded-full opacity-20"></div>
+            <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-blue-800 rounded-full opacity-20"></div>
+            
+            <div class="relative z-10 text-center">
+                <h1 class="text-4xl font-bold title-font mb-2">ANIVERSÁRIO</h1>
+                <p class="text-blue-300 uppercase tracking-widest text-sm">Luiz Roberto - 20 anos</p>
+            </div>
+        </div>
+        
+        <!-- Conteúdo do convite -->
+        <div class="p-8">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold title-font text-blue-400 mb-2">CELEBRAÇÃO</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto my-4"></div>
+                <p class="text-gray-300">Chegou a hora de comemorar com estilo, amigos, família e muita energia!</p>
+            </div>
+            
+            <!-- Detalhes em formato de cartão -->
+            <div class="bg-gray-800 rounded-lg p-6 mb-8 border border-gray-700 glow">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex items-center">
+                        <div class="hexagon bg-blue-600 w-12 h-12 flex items-center justify-center mr-4">
+                            <span class="text-xl">📍</span>
+                        </div>
+                        <div>
+                            <p class="text-gray-400 text-sm">LOCAL</p>
+                            <p class="font-semibold">Sitio Pilhões - Casa do Doca</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <div class="hexagon bg-blue-600 w-12 h-12 flex items-center justify-center mr-4">
+                            <span class="text-xl">📅</span>
+                        </div>
+                        <div>
+                            <p class="text-gray-400 text-sm">DATA</p>
+                            <p id="dateDisplay" class="font-semibold">20/07/2025</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <div class="hexagon bg-blue-600 w-12 h-12 flex items-center justify-center mr-4">
+                            <span class="text-xl">⏰</span>
+                        </div>
+                        <div>
+                            <p class="text-gray-400 text-sm">HORÁRIO</p>
+                            <p class="font-semibold">16:00 em diante</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="text-gray-300 mb-8 text-center leading-relaxed">
+                Sua presença é o presente que mais desejo para celebrar essa data especial. 
+                Teremos música, comida e drinks especiais para uma noite inesquecível!
+            </p>
+            
+            <!-- Contador regressivo estilizado -->
+            <div class="bg-gray-800 rounded-lg p-6 mb-8 border border-gray-700">
+                <h3 class="text-center text-blue-400 font-semibold mb-4 uppercase tracking-wider">Contagem Regressiva</h3>
+                <div id="countdown" class="flex justify-center space-x-3 text-center">
+                    <div class="bg-gray-900 rounded-lg p-3 w-16 border border-gray-700">
+                        <div id="days" class="text-2xl font-bold text-blue-400">00</div>
+                        <div class="text-xs text-gray-400 mt-1">DIAS</div>
+                    </div>
+                    <div class="text-blue-400 flex items-center">:</div>
+                    <div class="bg-gray-900 rounded-lg p-3 w-16 border border-gray-700">
+                        <div id="hours" class="text-2xl font-bold text-blue-400">00</div>
+                        <div class="text-xs text-gray-400 mt-1">HORAS</div>
+                    </div>
+                    <div class="text-blue-400 flex items-center">:</div>
+                    <div class="bg-gray-900 rounded-lg p-3 w-16 border border-gray-700">
+                        <div id="minutes" class="text-2xl font-bold text-blue-400">00</div>
+                        <div class="text-xs text-gray-400 mt-1">MIN</div>
+                    </div>
+                    <div class="text-blue-400 flex items-center">:</div>
+                    <div class="bg-gray-900 rounded-lg p-3 w-16 border border-gray-700">
+                        <div id="seconds" class="text-2xl font-bold text-blue-400">00</div>
+                        <div class="text-xs text-gray-400 mt-1">SEG</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Botão de confirmação estilizado -->
+            <div class="text-center">
+                <button id="confirmBtn" class="relative overflow-hidden bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 group">
+                    <span class="relative z-10">CONFIRMAR PRESENÇA</span>
+                    <span class="absolute inset-0 bg-gradient-to-r from-blue-500 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                </button>
+                <p id="confirmationMessage" class="mt-4 text-blue-400 hidden flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    PRESENÇA CONFIRMADA - NOS VEMOS LÁ!
+                </p>
+            </div>
+        </div>
+        
+        <!-- Rodapé -->
+        <div class="bg-gray-900 bg-opacity-50 p-4 text-center text-sm text-gray-400">
+            <p>Por favor, confirme sua presença até 19/07/2025</p>
+        </div>
+    </div>
+
+
+        
+    
+</body>
+</html>
 
     <script src="index.js"></script>
-
 </body>
-
 </html>
